@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+<body>
+
+    <%- include('./partials/nav.ejs') %>
+    <div class="blogs content">
+        <h2>Blogposts</h2>
+        <% if(blogs.length>0) { %>
+        <% for(let i=0;i<blogs.length;i++) { %>
+            <div style="margin: 5px; border-radius: 5px; background-color: rgb(210, 209, 209); padding: 20px;">
+                <a  class="single" href="/blogs/<%= blogs[i]._id%>"">
+                <h3> <%= blogs[i].title%></h3>
+                <p> <%= blogs[i].snippet %> </p>
+                <p> <%= blogs[i].body %> </p>
+                </a>
+            </div>
+        <% }} %>
+        <% if(blogs.length==0) { %>
+        <h3> Nothing to see here !</h3>
+        <%}%>
+    </div>
+    <%- include('./partials/footer.ejs') %>
+    </body>
+</html>

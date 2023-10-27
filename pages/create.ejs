@@ -1,0 +1,50 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body>
+  <%- include("./partials/nav.ejs") %>
+
+  <div class="create-blog content">
+    <form action="/blogs" method="POST">
+      <label for="title">Blog title:</label>
+      <input type="text" id="title" name="title" required>
+      <label for="snippet">Blog snippet:</label>
+      <input type="text" id="snippet" name="snippet" required>
+      <label for="body">Blog body:</label>
+      <textarea id="body" name="body" required></textarea>
+      <button>Submit</button>
+    </form>
+  </div>
+
+  <script>
+
+    const form = document.querySelector('form');
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+
+      const title = document.getElementById('title').value;
+      const snippet = document.getElementById('snippet').value;
+      const body = document.getElementById('body').value;
+
+      try{
+        console.log('blog creation occuring')
+        const result = await fetch('/blogs', {
+          method:'POST',
+          body:JSON.stringify({userid:'65145d3742862744a84ad1b3',blog : {title,snippet,body}}),
+          headers:{'Content-Type':'application/json'}
+        });
+        const data = await result.json();
+        console.log(data);
+        if(data==='success'){
+          location.assign('/');
+        }
+      }catch(err)
+      {
+        console.log(err);
+      }
+
+    })
+  </script>
+  <%- include("./partials/footer.ejs") %>
+</body>
+</html>
