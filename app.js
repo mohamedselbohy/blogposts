@@ -9,7 +9,7 @@ const cookieParser = require('cookie-parser');
 const middlewares = require('./middleware/authMiddleware.js')
 
 
-const dbURI = 'mongodb+srv://msayedelbohy:WINway22@nodelearning.z7llbef.mongodb.net/Imnode?retryWrites=true&w=majority';
+const dbURI = 'mongodb+srv://msayedelbohy:pass1234@nodelearning.z7llbef.mongodb.net/Imnode?retryWrites=true&w=majority';
 mongoose.connect(dbURI).then((result)=>{
     console.log("connection to database successful");
     app.listen(3000);
